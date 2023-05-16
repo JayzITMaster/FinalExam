@@ -1,0 +1,107 @@
+
+    #heading{
+        text-align: center;
+    }
+    
+    #form{
+        border:1px solid rgb(0, 0, 0);
+        width: 80%;
+        margin: 2% 12% 12% 12%;
+        padding: 5%;
+    } 
+    h1, h2, h3, label {
+        
+        font-family: 'Lato';
+        font-weight: 700;
+    }
+    /* login form styles */ 
+    .bgBlue{
+        background-color: #dadbdf;
+    }
+    .Card{
+        margin: 4% 4% 4% 22%;
+        padding: 5%;
+        width: 600px;
+        height: 835px;
+        font-family: 'Lato';
+        background: #FFFFFF;
+        box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.05);
+        border-radius: 20px;
+    }
+    .CardHeading{
+        text-align: center;
+        
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        color: #E3B04B;
+    }
+    
+    .LoginFields{
+        margin: 5% 0% 0% 0%;
+        color: #E3B04B;
+        display: block;
+        
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 36px;
+    }
+    
+
+ 
+    /* Ui for Views*/ 
+    .CardUI{
+        margin: 2% 4% 2% 4%;
+        padding: 5%;
+        width: 1420px;
+        height: 650px;
+        font-family: 'Lato';
+        background: #FFFFFF;
+        box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.05);
+        border-radius: 10px;
+    }
+    
+    .UserUIHeader{
+        margin-right: 57%;
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 15px;
+        color: #E3B04B;
+        
+    }
+    
+    thead{
+        background-color: #E3B04B;
+    }
+    
+    .UserTable{
+        border-radius: 20px;
+        margin-top: 5%;
+    }
+    
+
+    
+    .NavBar{
+        word-spacing: 30px;
+        font-family: 'Lato';
+    }
+    
+    .filter{
+        font-size: 30px;
+        font-weight: 700;
+        color:#E3B04B;
+    }
+    
+    .filter select {
+        width: 400px;
+        height: 50px; 
+        
+        background: #E3B04B;
+        border: 1px solid #B8B8B8;
+        box-shadow: inset 0px 0px 10px 1px rgba(0, 0, 0, 0.02);
+        border-radius: 5px;
+        color: white;
+    }
+    

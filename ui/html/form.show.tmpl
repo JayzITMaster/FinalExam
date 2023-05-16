@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+
+  <title> OSIPP Table View</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../static/images/favicon/favicon.ico" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"/>
+
+  <!-- Icons. Uncomment required icon fonts -->
+  <link rel="stylesheet" href="../static/css/boxicons.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="../static/css/core.css" class="template-customizer-core-css" />
+  <link rel="stylesheet" href="../static/css/theme-default.css" class="template-customizer-theme-css" />
+  <link rel="stylesheet" href="../static/css/Form.css">
+
+</head>
+
+
+<body>
+<div>
+  {{$formData := .Form}}
+  {{$commentData := .Comments}}
+
+  {{range $form := $formData}}
+      
+  <h2 id="heading">Biographical Affidavit</h2>
+  <form id="form" action = "/updateFormSubmitted" method = "POST">
+    
+    <p>
+      <p> User_ID: {{$form.User_id}} Form ID:{{$form.Form_id}}</p>
+      <input name = "user-id" value = "{{$form.User_id}}" hidden>
+      <input name = "form-id" value = "{{$form.Form_id}}" hidden>
+      
+      
+      <label for="full-name">1. Affiant's Full Name:</label>
+      <input type="text" id="full-name" name="full-name" placeholder="Full name" value = "{{$form.Affiant_full_name}}"> 
+      <div class = "d-inline-flex">
+
+       {{range $comment := $commentData}}
+       {{if not $comment.Comment1}}
+       <textarea rows="1" name="1"></textarea>
+       {{else}}
+       <textarea rows="1" name="1">{{$comment.Comment1}}</textarea>
+        {{end}}
+        
+      </div>
+    </p>
+    
+    
+    <div class = "d-inline-flex"> 
+      <p> 
+        <label for="other-names">2. Other names used at any time:</label>
+        <input type="text" id="other-names" name="other-names" placeholder="Other name" value = "{{$form.Other_names}}">
+      </p>
+    </div>
+    <div class = "d-inline-flex">
+      {{if not $comment.Comment2}}
+      <textarea rows="1" name="2"></textarea>
+      {{else}}
+      <textarea rows="1" name="2">{{$comment.Comment2}}</textarea>
+       {{end}}
+      
+    </div>
+    
+    
+    <br>
+    
+    <div class = "d-inline-flex">
+      <p>
+        <label for="Question-namechange">3. Have you ever had your name changed?</label>
+        
+        <input type="radio" id="name-changed-yes" name="name-changed" value="true">
+        <label for="name-changed-yes">Yes</label>
+        
+        <input type="radio" id="name-changed-no" name="name-changed" value="false">
+        <label for="name-changed-no">No</label>
+        
+      </p>
+    </div>
+    <div class = "d-inline-flex">
+      {{if not $comment.Comment3}}
+      <textarea rows="1" name="3"></textarea>
+      {{else}}
+      <textarea rows="1" name="3">{{$comment.Comment3}}</textarea>
+       {{end}}
+      
+    </div>
+    
+    <br>
+    
+    <div class = "d-inline-flex">
+      <fieldset>
+        <legend>If "Yes", please provide the following information:</legend>
+        <p>
+          <label for="previous-names">Previous name(s):</label>
+          <input type="text" id="previous-names" name="previous-names" value = "{{$form.Previous_name}}">
+        </p> <br>
+        
+        <p>
+          <label for="reason-for-change">Reason for the change:</label>
+          <input type="text" id="reason-for-change" name="reason-for-change" value = "{{$form.Reason_for_Change}}">
+        </p>
+      </fieldset>
+    </div>
+    <div class = "d-inline-flex">
+      {{if not $comment.Comment35}}
+      <textarea rows="1" name="3.5"></textarea>
+      {{else}}
+      <textarea rows="1" name="3.5">{{$comment.Comment35}}</textarea>
+       {{end}}
+    </div>
+
+    
+    <label>4.Affiant's Identification No. applied to Government Record Systems.
+      Two certified copies of picture ID must be submitted.
+      The documents must be current and valid. </label>
+      <div class = "d-inline-flex">
+        <label for="Identification-table">
+          
+          <table id="Q4-Identification-table" class = "table">
+            <tr>
+              <th>Document</th>
+              <th>Number of Document</th>
+              <th>Date of issuance</th>
+              <th>Country of issuance</th>
+            </tr>
+            <tr>
+              <td>Social Security </td>
+              <td> <input type="number" id="ss-doc-number" name="SS-number" value = "{{$form.Social_security_num}}"></td>
+              <td> <input type="date" id="ss-date" name="SS-issue-date" value = {{$form.Social_security_date}}></td>
+              <td> <input type="text" id="ss-country" name="SS-country-value" value = "{{$form.Social_security_country}}"></td>
+            </tr>
+            <tr>
+              <td>Passport</td>
+              <td><input type="number" id="pp-doc-number" name="PP-number" value = "{{$form.Passport_number}}"></td>
+              <td><input type="date" id="pp-date" name="PP-issue-date" value = {{$form.Passport_date}}></td>
+              <td><input type="text" id="pp-country" name="PP-country-value" value = "{{$form.Passport_country}}"></td>
+            </tr>
+            <tr>
+              <td>National Health Insurance </td>
+              <td><input type="number" id="nhi-doc-number" name="NHI-number" value = "{{$form.NHI_number}}"></td>
+              <td><input type="date" id="nhi-date" name="NHI-issue-date" value = {{$form.NHI_date}}></td>
+              <td><input type="text" id="nhi-country" name="NHI-country-value" value = "{{$form.NHI_country}}"></td>
+            </tr>
+          </table>
+          
+        </label>
+        
+        {{if not $comment.Comment4}}
+        <textarea name="4"></textarea>
+        {{else}}
+        <textarea name="4">{{$comment.Comment4}}</textarea>
+         {{end}}
+        
+      </div>
+    </p>
+
+    <div class = "d-inline-flex">
+      <p>
+        
+        <label for="dateOfBirth">5. Date of Birth:</label>
+        <input type="date" id="dateOfBirth" name="dateOfBirth" placeholder="DD/MM/YYYY" value = {{$form.Dob}}><br><br>
+      </div>
+      <div class = "d-inline-flex">
+        {{if not $comment.Comment5}}
+        <textarea rows="1" name="5"></textarea>
+        {{else}}
+        <textarea rows="1" name="5">{{$comment.Comment5}}</textarea>
+         {{end}}
+        
+      </div>
+    </p>
+    
+    <br> 
+
+    <div class = "d-inline-flex">
+    <p>
+      <label for="placeOfBirth">6. Place of Birth:</label>
+      <input type="text" id="placeOfBirth" name="placeOfBirth" placeholder="District/State and Country" value = "{{$form.Place_of_birth}}"><br><br>
+    </p>
+  </div>
+    <div class = "d-inline-flex">
+      {{if not $comment.Comment6}}
+      <textarea rows="1" name="6"></textarea>
+      {{else}}
+      <textarea rows="1" name="6">{{$comment.Comment6}}</textarea>
+       {{end}}
+      
+    </div>
+
+    <br>
+    
+    <div class = "d-inline-flex">
+    <p>
+      <label for="placeOfBirth">7. Nationality:</label>
+      <input type="text" id="nat" name="nationality" placeholder="Nationality" value = "{{$form.Nationality}}"><br><br>
+    </p>
+  </div>
+  <div class = "d-inline-flex">
+    {{if not $comment.Comment7}}
+    <textarea rows="1" name="7"></textarea>
+    {{else}}
+    <textarea rows="1" name="7">{{$comment.Comment7}}</textarea>
+     {{end}}
+    
+  </div>
+
+  <br>
+
+  <div class = "d-inline-flex">
+    <p>
+      <label for="nationality">8. Nationality: (Indicate how aquired.) </label>
+      <select id="nationality" name="acq-nationality" value = "{{$form.Acquired_nationality}}">
+        <option value="birth">Birth</option>
+        <option value="naturalization">Naturalization</option>
+        <option value="marriage">Marriage</option>
+        <option value="other">Other</option>
+      </select>
+    </p>
+  </div>
+  <div class = "d-inline-flex">
+    {{if not $comment.Comment8}}
+    <textarea rows="1" name="8"></textarea>
+    {{else}}
+    <textarea rows="1" name="8">{{$comment.Comment8}}</textarea>
+     {{end}}
+    
+  </div>
+    <br>
+  
+    <div class = "d-inline-flex">
+    <p>
+      <label for="spouse-name">9. Spouse’s Name:</label>
+      <input type="text" id="spouse-name" name="spouse-name" placeholder="Name" value = "{{$form.Spouse_name}}"><br><br>
+    </p>
+  </div>
+  <div class = "d-inline-flex">
+    {{if not $comment.Comment9}}
+    <textarea rows="1" name="9"></textarea>
+    {{else}}
+    <textarea rows="1" name="9">{{$comment.Comment9}}</textarea>
+     {{end}}
+    
+  </div>
+    <br>
+    
+    <p>
+      
+      <label for="spouse-name">10. Contact Details:</label>
+      <div class = "d-inline-flex">
+      
+      <table id="Q9-AffiantAddress-table">
+        <tr>
+          <th>Physical Address</th>
+          <th>Telephone Number</th>
+          <th>Fax Number</th>
+          <th>Email Address</th>
+        </tr>
+        <tr>
+          <td><input type="text" id="address" name="AF-address" value = "{{$form.Affiants_address}}"></td>
+          <td><input type="tel" id="number" name="AF-number" value = "{{$form.Residencial_phone_number}}"></td>
+          <td><input type="tel" id="fax" name="Fax-Number" value = "{{$form.Residenceial_fax_num}}"></td>
+          <td><input type="text" id="email" name="email-address" value = "{{$form.Residencial_email}}"></td>
+        </tr>
+      </table>
+      
+      <p id = "content"hidden>{{$form.Name_change_status}}</p>      
+    </label> <br>
+  </p>
+  </div>
+  <div class = "d-inline-flex">
+    {{if not $comment.Comment10}}
+    <textarea name="10"></textarea>
+    {{else}}
+    <textarea name="10">{{$comment.Comment10}}</textarea>
+     {{end}}
+    
+  </div>
+  {{end}}
+  
+  
+</label>
+<br>
+<button class = "btn btn-outline-danger" id="Buttons">Submit</button> 
+</form>
+<br>
+
+<div class = "Buttons">
+  
+  <form action= "/affidavitAccept" method = "POST" class = "d-inline-flex" >
+    <button type = "submit"  class = "btn btn-outline-primary" name = "accept" id = "acceptBtn" value = {{$form.Form_id}}>Accept</button>
+  </form>
+  
+  <form action = "/affidavitDeny" method = "POST" class = "d-inline-flex"> 
+    <button type = "submit" name = "deny" id = "denyBtn" class = "btn btn-outline-primary" value = {{$form.Form_id}}>Deny</button>
+  </form>
+  
+  <button  class = "btn btn-outline-primary " id="download-btn" class = "d-inline-flex">Download</button>
+  {{end}}
+  
+  {{with .UserPermStatus}}
+  <div id = "AdminPerm" class = "adminPerm" hidden>{{.}}</div>
+  {{end}}
+</div>
+</div>
+
+<script>
+  
+  //Download button controls for Downloading PDF 
+  const downloadBtn = document.getElementById("download-btn");
+  downloadBtn.addEventListener("click", () => {
+    // trigger the print dialog
+    window.print();
+  });
+  
+  
+  
+
+  AdminStatus = document.getElementById("AdminPerm").innerHTML;
+  Input = document.getElementsByTagName("input");
+  if (AdminStatus == "true") {
+    for ( i = 0;  i <= Input.length - 1; i++ ) {
+      Input[i].readOnly = true;
+    }
+  } else {
+    //Hiding accept and deny options for normal users 
+    document.getElementById("acceptBtn").style.visibility = 'hidden';
+    document.getElementById("denyBtn").style.visibility = 'hidden';
+    document.getElementById("download-btn").style.visibility = 'hidden';
+
+    //Hiding any empty comment boxes from normal users
+    textAreas = document.getElementsByTagName("textarea");
+    for ( i = 0;  i <= textAreas.length - 1; i++ ) {
+      if (textAreas[i].textContent.trim() == "") {
+        textAreas[i].style.visibility = 'hidden';
+      }
+    }
+  }
+  
+  
+  status = document.getElementById('content').textContent;
+  
+  function trigger(status) {
+    if (status == 'false') {
+      document.getElementById("name-changed-yes").checked = true;
+    }
+    else if (status == 'true') {
+      document.getElementById("name-changed-no").checked = true;
+    } 
+    
+  }
+  
+  trigger(status)
+  
+  
+  
+</script>
+
+</body>
+</html>

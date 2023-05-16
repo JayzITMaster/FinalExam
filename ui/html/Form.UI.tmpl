@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+
+  <title> OSIPP Table View</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../static/images/favicon/favicon.ico" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"/>
+
+  <!-- Icons. Uncomment required icon fonts -->
+  <link rel="stylesheet" href="../static/css/boxicons.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="../static/css/core.css" class="template-customizer-core-css" />
+  <link rel="stylesheet" href="../static/css/theme-default.css" class="template-customizer-theme-css" />
+  <link rel="stylesheet" href="../static/css/Form.css">
+
+</head>
+
+<body>
+<div class = "d-inline-flex m-4"> 
+  <h2 id="heading">Biographical Affidavit</h2>
+  <form id="form" action = "/AffidavitForm" method = "POST">
+
+    <p>
+      <label for="full-name">1. Affiant's Full Name:</label>
+      <input type="text" id="full-name" name="full-name" placeholder="Full name">
+    </p>
+
+    <p>
+      <label for="other-names">2. Other names used at any time:</label>
+      <input type="text" id="other-names" name="other-names" placeholder="Other name">
+    </p>
+
+    <p>
+      <label for="Question-namechange">3. Have you ever had your name changed?</label>
+
+      <input type="radio" id="name-changed-yes" name="name-changed" value="true">
+      <label for="name-changed-yes">Yes</label>
+
+      <input type="radio" id="name-changed-no" name="name-changed" value="false">
+      <label for="name-changed-no">No</label>
+
+    </p>
+
+    <fieldset>
+      <legend>If "Yes", please provide the following information:</legend>
+      <p>
+        <label for="previous-names">Previous name(s):</label>
+        <input type="text" id="previous-names" name="previous-names">
+      </p>
+
+      <label for="reason-for-change">Reason for the change:</label>
+      <input type="text" id="reason-for-change" name="reason-for-change">
+      </p>
+    </fieldset>
+
+    <p>
+      <label>4.Affiant's Identification No. applied to Government Record Systems.
+        Two certified copies of picture ID must be submitted.
+        The documents must be current and valid. </label>
+
+      <label for="Identification-table">
+
+        <table id="Q4-Identification-table">
+          <tr>
+            <th>Document</th>
+            <th>Number of Document</th>
+            <th>Date of issuance</th>
+            <th>Country of issuance</th>
+          </tr>
+          <tr>
+            <td>Social Security </td>
+            <td> <input type="number" id="ss-doc-number" name="SS-number"></td>
+            <td> <input type="date" id="ss-date" name="SS-issue-date"></td>
+            <td> <input type="text" id="ss-country" name="SS-country-value"></td>
+          </tr>
+          <tr>
+            <td>Passport</td>
+            <td><input type="number" id="pp-doc-number" name="PP-number"></td>
+            <td><input type="date" id="pp-date" name="PP-issue-date"></td>
+            <td><input type="text" id="pp-country" name="PP-country-value"></td>
+          </tr>
+          <tr>
+            <td>National Health Insurance </td>
+            <td><input type="number" id="nhi-doc-number" name="NHI-number"></td>
+            <td><input type="date" id="nhi-date" name="NHI-issue-date"></td>
+            <td><input type="text" id="nhi-country" name="NHI-country-value"></td>
+          </tr>
+        </table>
+
+      </label>
+    </p>
+
+
+    <label for="dateOfBirth">5. Date of Birth:</label>
+    <input type="date" id="dateOfBirth" name="dateOfBirth" placeholder="DD/MM/YYYY"><br><br>
+
+    <label for="placeOfBirth">6. Place of Birth:</label>
+    <input type="text" id="placeOfBirth" name="placeOfBirth" placeholder="District/State and Country"><br><br>
+
+    <label for="placeOfBirth">6. Nationality:</label>
+    <input type="text" id="nat" name="nationality" placeholder="Nationality"><br><br>
+
+    <label for="nationality">7. Nationality: (Indicate how aquired.) </label>
+    <select id="nationality" name="acq-nationality">
+      <option value="birth">Birth</option>
+      <option value="naturalization">Naturalization</option>
+      <option value="marriage">Marriage</option>
+      <option value="other">Other</option>
+    </select>
+
+    <label for="spouse-name">8. Spouse’s Name:</label>
+    <input type="text" id="spouse-name" name="spouse-name" placeholder="Name"><br><br>
+
+    <label for="spouse-name">9. Contact Details:</label>
+    <table id="Q9-AffiantAddress-table">
+      <tr>
+        <th>Physical Address</th>
+        <th>Telephone Number</th>
+        <th>Fax Number</th>
+        <th>Email Address</th>
+      </tr>
+      <tr>
+        <td><input type="text" id="address" name="AF-address"></td>
+        <td><input type="tel" id="number" name="AF-number"></td>
+        <td><input type="tel" id="fax" name="Fax-Number"></td>
+        <td><input type="text" id="email" name="email-address"></td>
+      </tr>
+    </table>
+
+  </label> <br>
+</label> <br>
+
+
+<label for="submitbutton">
+
+  <button class = " btn btn-outline-danger" id="submitBtn">Submit</button>
+
+</label>
+
+  </form>
+</div>
+</body>
+
+</html>
