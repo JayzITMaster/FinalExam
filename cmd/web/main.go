@@ -24,7 +24,7 @@ type application struct {
 	admin           models.AdminModel
 	publicuser      models.PublicUserModel
 	archive         models.ArchiveModel
-	comments 		models.CommentsModel
+	comments        models.CommentsModel
 }
 
 func main() {
@@ -58,7 +58,7 @@ func main() {
 		admin:      models.AdminModel{DB: db},
 		publicuser: models.PublicUserModel{DB: db},
 		archive:    models.ArchiveModel{DB: db},
-		comments: models.CommentsModel{DB: db},
+		comments:   models.CommentsModel{DB: db},
 	}
 	// cleanup the connection pool
 	defer db.Close()
