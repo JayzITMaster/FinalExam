@@ -1,0 +1,1 @@
+This folder will contain all the migration files which are for the DB
